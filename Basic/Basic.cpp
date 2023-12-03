@@ -72,10 +72,12 @@ void processLine(std::string line, Program &program, EvalState &state) {
         lineNumber = std::stoi(it1);
         //错误：处理只输入了一个数字的情况
         if(line==it1){
-            if(program.exist_line.find(lineNumber)!=program.exist_line.end()){
+            if(program.exist_line.find(lineNumber)!=program.exist_line.end()
+            || program.processed_line.find(lineNumber)!=program.processed_line.end()){
                 program.original_line.erase(lineNumber);
                 program.exist_line.erase(lineNumber);
                 delete program.processed_line[lineNumber];
+                program.processed_line.erase(lineNumber);
             }
             //错误：return要放在里层if的外面
             return;
@@ -175,6 +177,7 @@ void processLine(std::string line, Program &program, EvalState &state) {
         // 错误：这里只要构造一个REM就行，不用再进行其他操作
         stmt = new REM ();
         if(lineNumber==-1){
+            stmt->execute(state,program);
             delete stmt;
             std::cout<<"SYNTAX ERROR"<<std::endl;
             return;

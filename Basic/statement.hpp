@@ -97,10 +97,7 @@ public:
 bool isNumeric(const std::string& str);
 class REM:public Statement{
     public:
-        REM();
         virtual void execute(EvalState &state,Program &program) override;
-    private:
-        int a = 0;
 };
 class LET:public Statement{
     public:

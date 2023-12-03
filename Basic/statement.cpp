@@ -23,7 +23,6 @@ Statement::Statement() = default;
 
 Statement::~Statement() = default;
 //todo
-REM::REM(){}
 void REM::execute(EvalState &state,Program &program){}
 LET::LET(std::string str_in,Expression* ex_in){
     str=str_in;
