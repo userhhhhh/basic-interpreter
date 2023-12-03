@@ -55,7 +55,6 @@ void PRINT::execute(EvalState &state,Program &program){
     catch(...){
         throw;
     }
-
 //    std::cout<<a->eval(state)<<std::endl;
 }
 INPUT::INPUT(std::string variable){
