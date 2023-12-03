@@ -41,6 +41,8 @@ void LET::execute(EvalState &state,Program &program){
         state.setValue(str,value1);
     }
     catch(...){throw;}
+}
+LET::~LET(){
     delete ex;
 }
 PRINT::PRINT(Expression* expression){

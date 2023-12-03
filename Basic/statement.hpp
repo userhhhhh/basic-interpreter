@@ -108,6 +108,7 @@ class LET:public Statement{
     Expression* ex;
     LET(std::string,Expression*);
     virtual void execute(EvalState &state,Program &program) override;
+    ~LET();
 };
 class PRINT:public Statement{
     public:
