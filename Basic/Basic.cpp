@@ -100,7 +100,7 @@ void processLine(std::string line, Program &program, EvalState &state) {
                 stmt->execute(state,program);
                 delete stmt;
             }
-            catch(...){delete stmt;}
+            catch(...){delete stmt;throw;}
             return;
         }
     } else if (token == "PRINT") {
@@ -115,6 +115,7 @@ void processLine(std::string line, Program &program, EvalState &state) {
             catch(...){
                 delete stmt;
                 delete expression;
+                throw;
             }
             return;
         }
