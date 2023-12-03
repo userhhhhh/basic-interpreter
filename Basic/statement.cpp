@@ -41,21 +41,17 @@ void LET::execute(EvalState &state,Program &program){
         state.setValue(str,value1);
     }
     catch(...){throw;}
-}
-LET::~LET(){
     delete ex;
 }
 PRINT::PRINT(Expression* expression){
     a=expression;
-}
-PRINT::~PRINT(){
-    delete a;
 }
 void PRINT::execute(EvalState &state,Program &program){
     try{
         std::cout<<a->eval(state)<<std::endl;
     }
     catch(...){throw;}
+
 //    std::cout<<a->eval(state)<<std::endl;
 }
 INPUT::INPUT(std::string variable){
@@ -159,6 +155,7 @@ void CLEAR::execute(EvalState &state,Program &program){
     state.Clear();
 }
 void QUIT::execute(EvalState &state,Program &program){
+
     program.clear();
     state.Clear();
     exit(0);
