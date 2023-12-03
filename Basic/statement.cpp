@@ -163,6 +163,7 @@ void QUIT::execute(EvalState &state,Program &program){
     state.Clear();
     exit(0);
 }
+
 //在quit的时候释放内存
 void HELP::execute(EvalState &state,Program &program){
     std::cout << "Yet another basic interpreter" << std::endl;
