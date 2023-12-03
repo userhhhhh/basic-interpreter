@@ -96,17 +96,26 @@ void processLine(std::string line, Program &program, EvalState &state) {
 
         stmt = new LET(str_in,expression);
         if(lineNumber==-1){
-            stmt->execute(state,program);
-            delete stmt;
+            try{
+                stmt->execute(state,program);
+                delete stmt;
+            }
+            catch(...){delete stmt;}
             return;
         }
     } else if (token == "PRINT") {
         Expression* expression = parseExp(scanner);
         stmt = new PRINT(expression);
         if(lineNumber==-1){
-            stmt->execute(state,program);
-            delete stmt;
-            delete expression;
+            try{
+                stmt->execute(state,program);
+                delete stmt;
+                delete expression;
+            }
+            catch(...){
+                delete stmt;
+                delete expression;
+            }
             return;
         }
     } else if (token == "INPUT") {

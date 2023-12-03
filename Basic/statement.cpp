@@ -52,7 +52,9 @@ void PRINT::execute(EvalState &state,Program &program){
     try{
         std::cout<<a->eval(state)<<std::endl;
     }
-    catch(...){throw;}
+    catch(...){
+        throw;
+    }
 
 //    std::cout<<a->eval(state)<<std::endl;
 }

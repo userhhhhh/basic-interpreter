@@ -23,6 +23,7 @@ Program::~Program(){
 void Program::clear() {
     // std::cout<<exist_line.size()<<'\n';
     original_line.clear();
+    if(exist_line.size()==0) return;
     for(auto it=exist_line.begin();it!=exist_line.end();++it){
         // std::cout<<*it<<'\n';
         delete processed_line[*it];
