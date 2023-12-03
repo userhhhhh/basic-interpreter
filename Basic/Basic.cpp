@@ -100,7 +100,7 @@ void processLine(std::string line, Program &program, EvalState &state) {
                 stmt->execute(state,program);
                 delete stmt;
             }
-            catch(...){delete stmt;throw;}//错误
+            catch(...){delete stmt;throw;}//错误：要接收
             return;
         }
     } else if (token == "PRINT") {
