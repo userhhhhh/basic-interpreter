@@ -22,7 +22,7 @@ int stringToInt(std::string str);
 Statement::Statement() = default;
 
 Statement::~Statement() = default;
-//todo
+
 void REM::execute(EvalState &state,Program &program){}
 LET::LET(std::string str_in,Expression* ex_in){
     str=str_in;

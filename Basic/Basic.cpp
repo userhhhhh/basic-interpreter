@@ -77,7 +77,7 @@ void processLine(std::string line, Program &program, EvalState &state) {
                 program.original_line.erase(lineNumber);
                 program.exist_line.erase(lineNumber);
                 delete program.processed_line[lineNumber];
-                program.processed_line.erase(lineNumber);
+                program.processed_line.erase(lineNumber);//错误：要 erase
             }
             //错误：return要放在里层if的外面
             return;
