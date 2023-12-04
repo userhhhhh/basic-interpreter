@@ -80,7 +80,6 @@ public:
 
     virtual void erase_print(){};
 
-
 };
 
 
