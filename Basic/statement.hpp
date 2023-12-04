@@ -78,7 +78,7 @@ public:
 // 子类需要重写 execute() 函数，并根据特定语句的要求实现相应的操作。
 // 每个子类都会定义自己的 execute() 方法来执行特定类型的语句。
 
-
+    virtual void erase_print(){};
 
 
 };
@@ -112,6 +112,7 @@ class PRINT:public Statement{
     Expression* a;
     PRINT(Expression*);
     virtual void execute(EvalState &state,Program &program) override;
+    void erase_print(){delete a;}
 };
 class INPUT:public Statement{
     public:

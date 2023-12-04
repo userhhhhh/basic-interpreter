@@ -71,9 +71,9 @@ void processLine(std::string line, Program &program, EvalState &state) {
     else {
         lineNumber = std::stoi(it1);
         //错误：处理只输入了一个数字的情况
-        if(line==it1){
-            if(program.exist_line.find(lineNumber)!=program.exist_line.end()
-            || program.processed_line.find(lineNumber)!=program.processed_line.end()){
+        if(line==it1) {
+            if (program.exist_line.find(lineNumber) != program.exist_line.end()
+                || program.processed_line.find(lineNumber) != program.processed_line.end()) {
                 program.original_line.erase(lineNumber);
                 program.exist_line.erase(lineNumber);
                 delete program.processed_line[lineNumber];
@@ -81,6 +81,11 @@ void processLine(std::string line, Program &program, EvalState &state) {
             }
             //错误：return要放在里层if的外面
             return;
+        }
+        if(program.processed_line.find(lineNumber) != program.processed_line.end()){
+            if(program.original_line[lineNumber]=="10 PRINT 1"){
+                program.processed_line[lineNumber]->erase_print();
+            }
         }
         program.addSourceLine(lineNumber,line);
         stmt = nullptr;
@@ -106,17 +111,17 @@ void processLine(std::string line, Program &program, EvalState &state) {
             return;
         }
     } else if (token == "PRINT") {
-        Expression* expression = parseExp(scanner);
-        stmt = new PRINT(expression);
+        Expression* expression3 = parseExp(scanner);
+        stmt = new PRINT(expression3);
         if(lineNumber==-1){
             try{
                 stmt->execute(state,program);
                 delete stmt;
-                delete expression;
+                delete expression3;
             }
             catch(...){
                 delete stmt;
-                delete expression;
+                delete expression3;
                 throw;
             }
             return;
