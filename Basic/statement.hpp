@@ -23,7 +23,6 @@
 #include "program.hpp"
 
 class Program;
-
 /*
  * Class: Statement
  * ----------------
