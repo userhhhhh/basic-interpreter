@@ -232,6 +232,5 @@ void processLine(std::string line, Program &program, EvalState &state) {
 
     program.setParsedStatement(lineNumber,stmt);
 
-
 }
 

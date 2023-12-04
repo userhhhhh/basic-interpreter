@@ -38,7 +38,6 @@ class Statement {
 
 public:
 
-
 /*
  * Constructor: Statement
  * ----------------------
